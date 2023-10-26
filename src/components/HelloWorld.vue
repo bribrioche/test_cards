@@ -82,23 +82,24 @@ export default {
     },
     createCard() {
       this.cards = [];
-      for (let index = 0; index < 10; index++) {
+      while (this.cards.length < 10) {
         let randomColor = Math.floor(Math.random() * 4);
         let randomValue = Math.floor(Math.random() * 12);
-        while (
-          this.cards.includes([
-            this.orderColors[randomColor],
-            this.orderValues[randomValue],
-          ])
-        ) {
-          console.log("doublon");
-          randomColor = Math.floor(Math.random() * 4);
-          randomValue = Math.floor(Math.random() * 12);
-        }
-        this.cards.push([
+
+        const card = [
           this.orderColors[randomColor],
           this.orderValues[randomValue],
-        ]);
+        ];
+
+        const isDuplicate = this.cards.some((existingCard) => {
+          return existingCard[0] === card[0] && existingCard[1] === card[1];
+        });
+
+        if (!isDuplicate) {
+          this.cards.push(card);
+        } else {
+          console.log("Doublon !");
+        }
       }
     },
     sortCards() {

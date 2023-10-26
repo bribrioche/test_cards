@@ -1,4 +1,4 @@
-# test_vue
+# test_cards
 
 ## Project setup
 ```

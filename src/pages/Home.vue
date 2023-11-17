@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="init">
-      <v-btn @click="shuffleTest"> Mélanger </v-btn>
+      <v-btn @click="start"> Mélanger </v-btn>
       <p class="ordre">Ordre : {{ shuffledColors }} | {{ shuffledValues }}</p>
     </div>
 
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import Card from "./Card.vue";
+import Card from "../components/Card.vue";
 export default {
-  name: "HelloWorld",
+  name: "HomePage",
   components: {
     Card,
   },
@@ -172,7 +172,7 @@ export default {
         }
       });
     },
-    shuffleTest() {
+    start() {
       this.createCard();
       this.shuffledColors = this.shuffle(this.orderColors);
       this.shuffledValues = this.shuffle(this.orderValues);
@@ -184,6 +184,36 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+.cards {
+  margin-left: 100px;
+  margin-right: 50px;
+  margin-top: 40px;
+  padding-bottom: 50px;
+}
+.hello {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.card-item {
+  margin-left: -50px;
+}
+
+.init {
+  .ordre {
+    margin-top: 20px;
+  }
+}
+
+.title {
+  margin: 10px;
+}
+</style>
+
 <style scoped lang="scss">
 .cards {
   margin-left: 100px;
